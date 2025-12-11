@@ -1,0 +1,113 @@
+<template>
+    <lightning-card title="Email Validator">
+        <img slot="asset" src={sonosimLogo} alt="SonoSim Logo" class="card-logo">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <div class="slds-grid slds-gutters slds-grid_vertical-align-end">
+                <div class="slds-col slds-size_3-of-4">
+                    <lightning-input
+                        type="email"
+                        label="Email Address"
+                        placeholder="Enter email to validate"
+                        value={emailInput}
+                        onchange={handleEmailChange}
+                        onkeyup={handleKeyUp}
+                        required>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    <lightning-button
+                        variant="brand"
+                        label="Validate"
+                        onclick={handleValidate}
+                        disabled={isValidateDisabled}
+                        class="validate-btn">
+                    </lightning-button>
+                </div>
+            </div>
+
+            <template if:true={isLoading}>
+                <div class="slds-m-top_medium slds-align_absolute-center">
+                    <lightning-spinner alternative-text="Validating..." size="small"></lightning-spinner>
+                    Validating email...
+                </div>
+            </template>
+
+            <template if:true={hasResult}>
+                <div class="slds-m-top_medium results-container">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">
+                        Results for: <strong>{result.email}</strong>
+                    </h3>
+                    
+                    <!-- Overall Status with Score -->
+                    <div class={overallStatusClass}>
+                        <lightning-icon icon-name={overallStatusIcon} size="small" class="slds-m-right_x-small"></lightning-icon>
+                        <span class="slds-m-right_small">{overallStatusText}</span>
+                        <span class="score-badge">Score: {result.score}/100</span>
+                    </div>
+
+                    <!-- Status Badge -->
+                    <div class="slds-m-top_small">
+                        <span class={statusBadgeClass}>{result.status}</span>
+                    </div>
+
+                    <!-- Validation Details Grid -->
+                    <div class="slds-grid slds-wrap slds-gutters slds-m-top_small">
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <div class={syntaxCardClass}>
+                                <lightning-icon icon-name={syntaxIcon} size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Format Valid
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <div class={domainCardClass}>
+                                <lightning-icon icon-name={domainIcon} size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Domain Exists
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <div class={mxCardClass}>
+                                <lightning-icon icon-name={mxIcon} size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                MX Record (Can Receive Mail)
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <div class={mailboxCardClass}>
+                                <lightning-icon icon-name={mailboxIcon} size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Mailbox Exists
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <div class={disposableCardClass}>
+                                <lightning-icon icon-name={disposableIcon} size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Disposable Email
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <div class={roleBasedCardClass}>
+                                <lightning-icon icon-name={roleBasedIcon} size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Role-Based (info@, support@)
+                            </div>
+                        </div>
+                        <template if:true={hasSuggestion}>
+                            <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                                <div class="result-card suggestion-card">
+                                    <lightning-icon icon-name="utility:info" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                    Did you mean: <strong>{result.suggestion}</strong>?
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-m-top_medium">
+                    <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                        <lightning-icon icon-name="utility:error" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        {errorMessage}
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
