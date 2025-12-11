@@ -1,4 +1,8 @@
-# ✅ Email Validation LWC Component
+# ✅ Email 
+
+https://github.com/user-attachments/assets/9aeeacce-f41b-4fc6-a89f-e6734dfc996b
+
+Validation LWC Component
 
 A Lightning Web Component for real-time email validation in Salesforce, powered by a free open-source API.
 
@@ -93,6 +97,9 @@ Before deploying, configure the callout in Salesforce:
 2. **Status vs Individual Checks** - Using the `status` field for overall validity is more reliable than checking individual fields
 3. **MX Records** - Understanding what MX (Mail Exchanger) records are helps explain validation results to users
 4. **Remote Site vs Named Credentials** - Remote Site Settings work well for simple, unauthenticated APIs
+
+
+
 
 
 
