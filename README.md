@@ -1,14 +1,14 @@
-# ✅ Email 
+# Demo 🎥
 
 https://github.com/user-attachments/assets/9aeeacce-f41b-4fc6-a89f-e6734dfc996b
 
-Validation LWC Component
+# ✅ Email Validation LWC Component
 
 A Lightning Web Component for real-time email validation in Salesforce, powered by a free open-source API.
 
 ---
 
-## 🎯 Business Problem
+## 🎯 Problem
 
 Salesforce orgs often suffer from **poor data quality** due to invalid or problematic email addresses:
 
@@ -20,7 +20,7 @@ Salesforce orgs often suffer from **poor data quality** due to invalid or proble
 
 ---
 
-## 💡 The Solution
+## 💡 Solution
 
 A **real-time email validation component** that integrates directly into Salesforce, allowing users to validate emails before saving records. The component provides:
 
@@ -55,25 +55,11 @@ A **real-time email validation component** that integrates directly into Salesfo
 2. **Score display** (0-100) for quick quality assessment
 3. **Status badges** (VALID, INVALID_FORMAT, INVALID_DOMAIN)
 4. **6 individual validation cards** with pass/fail indicators
-5. **Custom branding** with company logo
 6. **Error handling** with user-friendly messages
-7. **Loading states** for better UX
 
 
----
 
-## 🔧 Setup Instructions
 
-### 1. Add Remote Site Setting
-
-Before deploying, configure the callout in Salesforce:
-
-1. Go to **Setup → Remote Site Settings → New**
-2. **Name:** `RapidEmailVerifier`
-3. **URL:** `https://rapid-email-verifier.fly.dev`
-4. **Active:** ✅ Checked
-
----
  
 ### Status Values
 
